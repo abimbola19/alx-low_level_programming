@@ -1,9 +1,8 @@
 #include <stdio.h>
 /**
- * main - Write a program that prints _putchar, followed by a new line.
- * Description: "prints _putchar to stdout"
+ * main - Print holberton word
  *
- * return: 0 (Success)
+ * Return: Always 0.
  */
 
 int main(void)
