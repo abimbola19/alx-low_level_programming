@@ -18,8 +18,8 @@ list_t *add_node_end(list_t **head, const char *str)
 	while (str[len])
 		len++;
 
-	neNodew = malloc(sizeof(list_t));
-	if (!new)
+	newNode = malloc(sizeof(list_t));
+	if (!newNode)
 		return (NULL);
 
 	newNode->str = strdup(str);
