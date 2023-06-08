@@ -8,7 +8,7 @@ void print_binary(unsigned long int n)
 {
 	int inc, kounter = 0;
 	unsigned long int current;
-	int target = 63
+	int target = 63;
 
 	for (inc = target; inc >= 0; inc--)
 	{
