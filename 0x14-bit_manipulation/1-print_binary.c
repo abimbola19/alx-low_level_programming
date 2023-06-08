@@ -10,7 +10,7 @@ void print_binary(unsigned long int n)
 	unsigned long int current;
 	int target = 63
 
-	for (inc = target; inc>= 0; inc--)
+	for (inc = target; inc >= 0; inc--)
 	{
 		current = n >> inc;
 
@@ -25,4 +25,3 @@ void print_binary(unsigned long int n)
 	if (!kounter)
 		_putchar('0');
 }
-
