@@ -1,37 +1,27 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * read_textfile - Read text file and print to STDOUT.
  * @filename: Text file to be read
  * @letters: Maximum number of letters to read and print
- * Return: The number of letters read and printed,
- * or 0 on failure or if filename is NULL
+ * Return: The number of letters read and printed, or 0 on failure or if filename is NULL
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *file = fopen(filename, "r");
+	char *buf;
+	ssize_t fd;
+	ssize_t w;
+	ssize_t t;
 
-	if (file == NULL)
-	{
-		error("Failed to open file");
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
 		return (0);
-	}
+	buf = malloc(sizeof(char) * letters);
+	t = read(fd, buf, letters);
+	w = write(STDOUT_FILENO, buf, t);
 
-	char *buffer = (char *)malloc(letters + 1);/* +1 for null terminator*/
-	
-	if (buffer == NULL)
-	{
-		perror("Failed to allocate memory");
-		fclose(file);
-		return (0);
-	}
-	ssize_t bytesRead = fread(buffer, sizeof(char), letters, file);
-	
-	buffer[bytesRead] = '\0';  /* Add null terminator at the end*/
-	printf("%s", buffer);
-	free(buffer);
-	fclose(file);
-	return (bytesRead);
+	free(buf);
+	close(fd);
+	return (w);
 }
